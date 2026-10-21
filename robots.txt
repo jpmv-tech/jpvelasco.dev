@@ -1,0 +1,57 @@
+User-agent: *
+Allow: /
+Disallow: /_archive-v1/
+
+User-agent: GPTBot
+Allow: /
+Disallow: /_archive-v1/
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /_archive-v1/
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /_archive-v1/
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /_archive-v1/
+
+User-agent: Claude-User
+Allow: /
+Disallow: /_archive-v1/
+
+User-agent: Claude-SearchBot
+Allow: /
+Disallow: /_archive-v1/
+
+User-agent: anthropic-ai
+Allow: /
+Disallow: /_archive-v1/
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /_archive-v1/
+
+User-agent: Perplexity-User
+Allow: /
+Disallow: /_archive-v1/
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /_archive-v1/
+
+User-agent: Bingbot
+Allow: /
+Disallow: /_archive-v1/
+
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /_archive-v1/
+
+User-agent: CCBot
+Allow: /
+Disallow: /_archive-v1/
+
+Sitemap: https://jpvelasco.dev/sitemap.xml

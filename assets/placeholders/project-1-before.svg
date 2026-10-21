@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" role="img" aria-label="Placeholder for project 1 before screenshot">
+  <rect width="800" height="600" fill="#FBF6EE"/>
+  <rect x="16" y="16" width="768" height="568" rx="16" fill="none" stroke="#C4553A" stroke-width="3" stroke-dasharray="10 9"/>
+
+  <!-- faint messy spreadsheet suggestion: uneven rows, no structure -->
+  <rect x="48" y="60" width="704" height="40" rx="6" fill="#EFE3D0"/>
+  <rect x="48" y="110" width="704" height="26" rx="6" fill="#DDE3D3"/>
+  <rect x="48" y="146" width="500" height="26" rx="6" fill="#DDE3D3"/>
+  <rect x="48" y="182" width="620" height="26" rx="6" fill="#DDE3D3"/>
+  <rect x="48" y="226" width="300" height="26" rx="6" fill="#DDE3D3"/>
+  <rect x="48" y="262" width="704" height="26" rx="6" fill="#DDE3D3"/>
+  <rect x="48" y="310" width="440" height="26" rx="6" fill="#DDE3D3"/>
+  <rect x="48" y="346" width="704" height="26" rx="6" fill="#DDE3D3"/>
+  <rect x="48" y="400" width="580" height="26" rx="6" fill="#DDE3D3"/>
+
+  <text x="400" y="470" font-family="Figtree, sans-serif" font-size="26" fill="#2E2621" text-anchor="middle" opacity="0.8">Drop screenshot here: project-1-before.png</text>
+  <text x="400" y="504" font-family="Figtree, sans-serif" font-size="17" font-style="italic" fill="#2E2621" text-anchor="middle" opacity="0.65">Tip: blur client names and emails first.</text>
+</svg>

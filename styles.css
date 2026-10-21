@@ -1,0 +1,1133 @@
+/* =========================================================
+   Patrick — Technical Virtual Assistant — Stylesheet
+   Plain CSS, no build step. Tokens live on :root below.
+   ========================================================= */
+
+:root {
+  /* Colors */
+  --cream: #FBF6EE;
+  --sand: #EFE3D0;
+  --sage: #DDE3D3;
+  --ink: #2E2621;
+  --ink-soft: rgba(46, 38, 33, 0.72);
+  --accent: #C4553A;
+  /* Darker derived accent: used for button backgrounds and for any readable
+     accent-colored TEXT (links, numerals, labels) so it clears 4.5:1 on
+     cream, sand and sage alike. Pure --accent stays reserved for decorative
+     strokes/doodles, where only 3:1 (non-text) applies. */
+  --accent-deep: color-mix(in srgb, var(--accent) 72%, var(--ink) 28%);
+
+  /* Shape */
+  --radius: 18px;
+  --radius-sm: 14px;
+  --radius-pill: 999px;
+
+  /* Shadow (screenshot frames only) */
+  --shadow-frame: 0 20px 40px -20px rgba(46, 38, 33, 0.25);
+
+  /* Type */
+  --font-display: "Fraunces", serif;
+  --font-body: "Figtree", sans-serif;
+}
+
+/* =========================================================
+   Reset-ish basics
+   ========================================================= */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  /* Keep anchor targets clear of the sticky header */
+  scroll-padding-top: 5.5rem;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+
+a {
+  color: var(--accent-deep);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+a:hover { text-decoration-thickness: 2px; }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.15;
+  margin: 0 0 0.5em;
+}
+
+p { margin: 0 0 1em; max-width: 65ch; }
+
+ul { margin: 0; padding: 0; }
+
+button {
+  font-family: inherit;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Focus visibility everywhere */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+summary:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  background: var(--ink);
+  color: var(--cream);
+  padding: 0.75em 1.25em;
+  border-radius: var(--radius-sm);
+  z-index: 100;
+  transition: top 0.2s ease;
+}
+.skip-link:focus {
+  top: 1rem;
+}
+@media (prefers-reduced-motion: reduce) {
+  .skip-link { transition: none; }
+}
+
+/* =========================================================
+   Layout helpers
+   ========================================================= */
+.wrap {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+section {
+  padding: 4.5rem 0;
+}
+
+.bg-cream { background: var(--cream); }
+.bg-sand { background: var(--sand); }
+.bg-sage { background: var(--sage); }
+
+.section-head {
+  margin-bottom: 2.5rem;
+}
+
+.kicker {
+  display: inline-block;
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+/* =========================================================
+   Buttons / tags
+   ========================================================= */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  background: var(--accent-deep);
+  color: var(--cream);
+  font-weight: 600;
+  padding: 0.9em 1.6em;
+  border-radius: var(--radius-pill);
+  text-decoration: none;
+  border: none;
+  line-height: 1.2;
+}
+.btn:hover { background: var(--ink); }
+.btn:focus-visible { outline-offset: 4px; }
+
+.btn-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 2px solid var(--accent);
+}
+
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.tag {
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  border: 1px solid color-mix(in srgb, var(--ink) 25%, transparent);
+  border-radius: var(--radius-pill);
+  padding: 0.3em 0.9em;
+  white-space: nowrap;
+}
+
+/* =========================================================
+   Header
+   ========================================================= */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  padding: 1.25rem 0;
+  background: var(--cream);
+  border-bottom: 1px solid transparent;
+  /* Height never changes on scroll: shrinking a sticky header shifts the
+     page, which flips is-scrolled back and makes the header flicker. */
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.site-header.is-scrolled {
+  border-bottom-color: color-mix(in srgb, var(--ink) 12%, transparent);
+  box-shadow: 0 8px 20px -16px rgba(46, 38, 33, 0.35);
+}
+@media (prefers-reduced-motion: reduce) {
+  .site-header { transition: none; }
+}
+.site-header .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.wordmark {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+}
+.wordmark-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 0.3em;
+  box-shadow: 0 0 0 2px var(--cream), 0 0 0 3px color-mix(in srgb, var(--accent) 45%, transparent);
+}
+.wordmark .dot-doodle {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+}
+.main-nav a {
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.98rem;
+}
+.main-nav a:hover { color: var(--accent-deep); }
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.menu-toggle {
+  display: none;
+  background: transparent;
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-pill);
+  padding: 0.5em 1.1em;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+@media (max-width: 760px) {
+  .main-nav {
+    display: none;
+    position: absolute;
+    left: 0; right: 0;
+    top: 100%;
+    background: var(--cream);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.1rem;
+    padding: 1.25rem 1.25rem 1.75rem;
+    border-bottom: 1px solid color-mix(in srgb, var(--ink) 15%, transparent);
+  }
+  .main-nav.is-open { display: flex; }
+  .site-header .wrap { position: relative; flex-wrap: wrap; }
+  .menu-toggle { display: inline-block; }
+}
+
+/* =========================================================
+   Hero
+   ========================================================= */
+.hero {
+  padding-top: 2.5rem;
+}
+.hero .wrap {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+@media (min-width: 900px) {
+  .hero .wrap {
+    grid-template-columns: 5fr 7fr;
+  }
+}
+
+.hero-text h1 {
+  font-size: clamp(2.2rem, 5vw + 1rem, 4.5rem);
+  margin-bottom: 0.6em;
+}
+
+.scribble-wrap {
+  position: relative;
+  display: inline;
+  white-space: normal;
+}
+.scribble-underline {
+  position: absolute;
+  left: -2%;
+  bottom: -0.18em;
+  width: 104%;
+  height: 0.5em;
+  pointer-events: none;
+}
+.scribble-underline path {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-dasharray: 420;
+  stroke-dashoffset: 420;
+}
+.js .scribble-underline path {
+  animation: draw-scribble 1s ease-out 0.4s forwards;
+}
+@media (prefers-reduced-motion: reduce) {
+  .js .scribble-underline path {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes draw-scribble {
+  to { stroke-dashoffset: 0; }
+}
+
+.hero-sub {
+  font-size: 1.15rem;
+  max-width: 48ch;
+}
+
+.hero-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.5rem;
+  margin: 1.75rem 0 1.5rem;
+}
+
+.availability {
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+.hero-image {
+  position: relative;
+}
+
+.browser-frame {
+  background: var(--sand);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-frame);
+  transform: rotate(-1.5deg);
+}
+
+.browser-bar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.7rem 1rem;
+  background: var(--sand);
+}
+
+.browser-dots {
+  display: flex;
+  gap: 0.4rem;
+  flex-shrink: 0;
+}
+.browser-dots span {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--ink) 22%, transparent);
+  display: inline-block;
+}
+
+.browser-address {
+  background: var(--cream);
+  border-radius: var(--radius-pill);
+  padding: 0.3em 1em;
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  flex-grow: 1;
+  max-width: 220px;
+}
+
+.browser-frame img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.hero-doodle-arrow {
+  position: absolute;
+  top: -2.2rem;
+  left: -2.5rem;
+  width: 90px;
+  height: 90px;
+  transform: rotate(8deg);
+}
+.hero-doodle-arrow path {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.hero-doodle-note {
+  position: absolute;
+  top: -3.4rem;
+  left: 3.5rem;
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--accent-deep);
+  font-size: 1rem;
+  width: 10rem;
+  transform: rotate(-4deg);
+}
+
+@media (max-width: 899px) {
+  .hero-image { margin-top: 2.5rem; }
+  .hero-doodle-arrow, .hero-doodle-note { display: none; }
+}
+
+/* placeholder state tweak */
+img.is-placeholder {
+  background: var(--sand);
+}
+
+/* Screenshot carousel — each row holds two identical groups that slide
+   by one group's width, so the loop has no visible seam. The second row
+   runs the same animation in reverse (left to right). */
+.marquee-stack {
+  margin-top: 3.5rem;
+}
+.marquee {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+          mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll var(--marquee-duration, 65s) linear infinite;
+}
+.marquee--reverse .marquee-track {
+  --marquee-duration: 45s; /* shorter row, so less time keeps the speed matched */
+  animation-direction: reverse;
+}
+.marquee-stack:hover .marquee-track { animation-play-state: paused; }
+.marquee-group {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0.75rem 0 1.5rem; /* room for the frame shadow */
+}
+.marquee-item {
+  flex-shrink: 0;
+  padding-right: 1.5rem; /* spacing lives on items so both groups are equal width */
+}
+.marquee-item img {
+  display: block;
+  height: 220px;
+  width: auto;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-frame);
+}
+@media (max-width: 760px) {
+  .marquee-item img { height: 160px; }
+}
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee { overflow-x: auto; }
+  .marquee-track { animation: none; }
+  .marquee-group[aria-hidden="true"] { display: none; }
+}
+
+/* =========================================================
+   2. Sound familiar? — conversation thread
+   ========================================================= */
+.conversation {
+  max-width: 44rem;
+  margin: 0 auto;
+}
+
+.chat-row {
+  display: flex;
+  margin-bottom: 1.5rem;
+}
+.chat-row.from-visitor { justify-content: flex-start; }
+.chat-row.from-patrick { justify-content: flex-end; }
+
+.bubble {
+  max-width: 85%;
+  padding: 1em 1.3em;
+  border-radius: var(--radius);
+  position: relative;
+}
+.bubble-label {
+  display: block;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  margin-bottom: 0.35em;
+}
+.bubble p { margin: 0; max-width: none; }
+
+.from-visitor .bubble {
+  background: var(--sand);
+  border-bottom-left-radius: 4px;
+}
+.from-patrick .bubble {
+  background: var(--sage);
+  border-bottom-right-radius: 4px;
+}
+
+.conversation-close {
+  text-align: center;
+  margin-top: 2.5rem;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.2rem;
+  position: relative;
+}
+
+/* =========================================================
+   3. What I can do for you — stacked rows
+   ========================================================= */
+.capability-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  padding: 2.75rem 0;
+}
+@media (min-width: 820px) {
+  .capability-row {
+    grid-template-columns: 5fr 7fr;
+    gap: 2.5rem;
+  }
+}
+
+.capability-number {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 2.75rem;
+  color: var(--accent-deep);
+  margin-bottom: 0.1em;
+  display: block;
+}
+
+.capability-row h3 {
+  font-size: 1.8rem;
+}
+
+.capability-example {
+  color: var(--ink-soft);
+  font-size: 1rem;
+}
+
+.row-divider {
+  width: 100%;
+  height: 16px;
+  display: block;
+}
+.row-divider path {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2;
+  stroke-linecap: round;
+  opacity: 0.45;
+}
+
+/* =========================================================
+   4. My work, in pictures
+   ========================================================= */
+.project {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: start;
+  margin-bottom: 5rem;
+}
+.project:last-child { margin-bottom: 0; }
+
+@media (min-width: 900px) {
+  .project {
+    grid-template-columns: 6fr 6fr;
+  }
+  .project.reverse .project-media { order: 2; }
+  .project.reverse .project-copy { order: 1; }
+}
+
+.project-media {
+  position: relative;
+}
+
+.frame-main {
+  background: var(--sand);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-frame);
+}
+.frame-main img { width: 100%; height: auto; }
+
+.frame-before {
+  background: var(--cream);
+  border: 2px dashed color-mix(in srgb, var(--accent) 60%, transparent);
+  border-radius: var(--radius-sm);
+  padding: 0.5rem;
+  width: 58%;
+  box-shadow: var(--shadow-frame);
+  margin-top: -2.5rem;
+  margin-left: 2rem;
+  position: relative;
+  z-index: 2;
+}
+.frame-before img { border-radius: 10px; width: 100%; height: auto; }
+
+/* Before/after stack (Project 04): "before" on top at full column width,
+   a hand-drawn arrow, then the "after" phone screenshot. No overlap. */
+.project-ba .frame-before {
+  width: 100%;
+  margin: 0;
+  padding: 0.75rem;
+  background: var(--cream);
+}
+.project-ba .frame-main {
+  max-width: 360px;
+  margin: 0 auto;
+}
+.project-ba .after-label {
+  display: block;
+  width: fit-content;
+  margin: 0 auto 0.5rem;
+  padding-left: 0;
+}
+.ba-arrow {
+  display: block;
+  width: 44px;
+  height: 52px;
+  margin: 0.75rem auto 0.25rem;
+}
+.ba-arrow path {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+@media (max-width: 599px) {
+  .project-ba .frame-main { max-width: none; }
+}
+
+/* Click-to-enlarge (Project 04 only; see script.js) */
+.zoom-btn {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
+}
+.lightbox {
+  max-width: 94vw;
+  max-height: 92vh;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: var(--cream);
+  overflow: visible;
+  cursor: zoom-out;
+}
+.lightbox::backdrop {
+  background: rgba(46, 38, 33, 0.82);
+}
+.lightbox img {
+  display: block;
+  max-width: 94vw;
+  max-height: 92vh;
+  width: auto;
+  height: auto;
+  border-radius: var(--radius-sm);
+}
+.lightbox-close {
+  position: absolute;
+  top: -0.75rem;
+  right: -0.75rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: var(--cream);
+  color: var(--ink);
+  font-size: 1.5rem;
+  line-height: 1;
+  box-shadow: var(--shadow-frame);
+}
+.lightbox-close:hover { background: var(--sand); }
+
+.before-label {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--accent-deep);
+  font-size: 0.95rem;
+  transform: rotate(-4deg);
+  margin-bottom: 0.3em;
+  padding-left: 0.4rem;
+}
+
+@media (max-width: 899px) {
+  .frame-before {
+    width: 70%;
+    margin-top: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.project-copy h3 {
+  font-size: 2rem;
+}
+
+.story-list {
+  list-style: none;
+  margin: 1.5rem 0;
+  padding: 0;
+  border-left: 2px solid color-mix(in srgb, var(--accent) 50%, transparent);
+}
+.story-list li {
+  padding: 0 0 1.1rem 1.25rem;
+  position: relative;
+}
+.story-list li::before {
+  content: "";
+  position: absolute;
+  left: -7px;
+  top: 0.4em;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.story-list li:last-child { padding-bottom: 0; }
+.story-label {
+  display: block;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  margin-bottom: 0.2em;
+}
+
+/* scroll reveal (animation #2) */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.js .reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .js .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* =========================================================
+   5. How we'd work together
+   ========================================================= */
+.path-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  margin-bottom: 3.5rem;
+}
+@media (min-width: 880px) {
+  .path-row {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+.path-connector {
+  display: none;
+}
+@media (min-width: 880px) {
+  .path-connector {
+    display: block;
+    width: 100%;
+    height: 24px;
+    margin-bottom: -1.5rem;
+  }
+  .path-connector path {
+    fill: none;
+    stroke: var(--accent);
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-dasharray: 2 10;
+  }
+}
+
+.path-stop {
+  text-align: left;
+}
+.path-numeral {
+  width: 3.2rem;
+  height: 3.2rem;
+  border-radius: 50%;
+  background: var(--sand);
+  color: var(--accent-deep);
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+.path-stop h3 { font-size: 1.3rem; }
+.path-stop p { font-size: 1rem; }
+
+.work-blocks {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+@media (min-width: 760px) {
+  .work-blocks { grid-template-columns: 1fr 1fr; }
+}
+
+.sticky-note {
+  background: var(--sand);
+  border-radius: var(--radius-sm);
+  padding: 2rem;
+  transform: rotate(-1.5deg);
+  position: relative;
+  box-shadow: 0 10px 24px -16px rgba(46, 38, 33, 0.3);
+}
+.sticky-note::before {
+  content: "";
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-3deg);
+  width: 70px;
+  height: 22px;
+  background: color-mix(in srgb, var(--sage) 85%, var(--cream));
+  opacity: 0.85;
+  border-radius: 2px;
+}
+.sticky-note h3 { font-size: 1.3rem; }
+
+.menu-list {
+  background: var(--sage);
+  border-radius: var(--radius-sm);
+  padding: 2rem;
+}
+.menu-list h3 { font-size: 1.3rem; }
+.menu-items {
+  list-style: none;
+  margin: 1.25rem 0;
+  padding: 0;
+}
+.menu-items li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 15%, transparent);
+}
+.menu-items li:last-child { border-bottom: none; }
+.menu-name {
+  font-weight: 600;
+  white-space: nowrap;
+}
+.menu-leader {
+  flex-grow: 1;
+  border-bottom: 2px dotted color-mix(in srgb, var(--ink) 35%, transparent);
+  height: 0.6em;
+}
+.menu-price {
+  white-space: nowrap;
+  font-weight: 600;
+}
+.menu-desc {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  margin-top: -0.3rem;
+}
+.menu-note {
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+/* =========================================================
+   6. FAQ
+   ========================================================= */
+.faq-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+@media (min-width: 860px) {
+  .faq-layout {
+    grid-template-columns: 4fr 8fr;
+  }
+  .faq-items { margin-left: auto; width: 100%; max-width: 46rem; }
+}
+
+.faq-doodle {
+  width: 70px;
+  height: 70px;
+  margin-top: 0.5rem;
+}
+.faq-doodle path, .faq-doodle circle {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.faq-item {
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 18%, transparent);
+  padding: 1.25rem 0;
+}
+.faq-item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1.1rem;
+  list-style: none;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+
+.faq-marker {
+  flex-shrink: 0;
+  width: 1.6rem;
+  height: 1.6rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  font-size: 1.1rem;
+  transition: transform 0.2s ease;
+}
+.faq-item[open] .faq-marker {
+  transform: rotate(45deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .faq-marker { transition: none; }
+}
+
+.faq-item p {
+  margin-top: 1rem;
+  color: var(--ink-soft);
+}
+
+/* =========================================================
+   7. Let's talk
+   ========================================================= */
+.talk-wrap { max-width: 1100px; }
+
+.talk-head { max-width: 46rem; }
+.talk-head p { color: var(--ink-soft); }
+.talk-head a { overflow-wrap: anywhere; }
+
+.talk-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+@media (min-width: 900px) {
+  .talk-layout {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: 3.5rem;
+    align-items: start;
+  }
+}
+
+/* Photo: a true 4:5 portrait crop anchored to the top so the face and a
+   little headroom always stay in frame. height:auto overrides the img's
+   height attribute, which otherwise stretches it into a tall strip. */
+.about-photo-wrap {
+  position: relative;
+  width: min(320px, 100%);
+  margin-bottom: 2rem;
+}
+.about-photo {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: var(--radius);
+  transform: rotate(-1.5deg);
+  box-shadow: var(--shadow-frame);
+}
+.about-doodle {
+  position: absolute;
+  bottom: -1.2rem;
+  right: -1.2rem;
+  width: 56px;
+  height: 56px;
+}
+.about-doodle path {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+.talk-about h3 { font-size: 1.5rem; }
+.talk-about p { max-width: 50ch; }
+
+.booking-title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Booking calendar: the embed is white inside, so the card itself is the
+   frame (no cream ring around it) with the same radius and soft shadow as
+   the site's other cards. form_embed.js sizes the iframe to its content;
+   the min-height only holds space until it loads. */
+.booking-frame {
+  background: #fff;
+  border: 1px solid color-mix(in srgb, var(--ink) 10%, transparent);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-frame);
+  overflow: hidden;
+}
+.booking-frame iframe {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+}
+#e4HM2hQkbffWB4DdPzeM_1792461548183 {
+  min-height: 560px;
+}
+.booking-fallback {
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  margin: 1rem 0 0;
+}
+.booking-fallback a {
+  color: var(--accent-deep);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+.booking-fallback a:hover { text-decoration-thickness: 2px; }
+
+/* =========================================================
+   Footer
+   ========================================================= */
+.site-footer {
+  padding: 2.5rem 0 3rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+.site-footer .wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+/* =========================================================
+   Generic doodle helper
+   ========================================================= */
+.doodle-circle-word {
+  position: relative;
+  display: inline-block;
+}
+.doodle-circle-word svg {
+  position: absolute;
+  left: -8%;
+  top: -18%;
+  width: 116%;
+  height: 150%;
+  pointer-events: none;
+}
+.doodle-circle-word svg path {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 3;
+  stroke-linecap: round;
+}

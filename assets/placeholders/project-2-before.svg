@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" role="img" aria-label="Placeholder for project 2 before screenshot">
+  <rect width="800" height="600" fill="#FBF6EE"/>
+  <rect x="16" y="16" width="768" height="568" rx="16" fill="none" stroke="#C4553A" stroke-width="3" stroke-dasharray="10 9"/>
+
+  <!-- faint stacked unread inquiry messages: a slightly messy pile -->
+  <g>
+    <rect x="90" y="340" width="610" height="80" rx="14" fill="#DDE3D3" opacity="0.45" transform="rotate(-3 395 380)"/>
+    <rect x="80" y="300" width="630" height="80" rx="14" fill="#DDE3D3" opacity="0.6" transform="rotate(2 395 340)"/>
+    <rect x="100" y="260" width="590" height="80" rx="14" fill="#DDE3D3" opacity="0.75" transform="rotate(-1.5 395 300)"/>
+    <rect x="75" y="150" width="650" height="90" rx="14" fill="#EFE3D0" transform="rotate(1 400 195)"/>
+    <circle cx="112" cy="195" r="9" fill="#C4553A"/>
+    <rect x="140" y="178" width="280" height="16" rx="8" fill="#DDE3D3"/>
+    <rect x="140" y="204" width="420" height="14" rx="7" fill="#DDE3D3" opacity="0.8"/>
+  </g>
+
+  <text x="400" y="480" font-family="Figtree, sans-serif" font-size="26" fill="#2E2621" text-anchor="middle" opacity="0.8">Drop screenshot here: project-2-before.png</text>
+  <text x="400" y="514" font-family="Figtree, sans-serif" font-size="17" font-style="italic" fill="#2E2621" text-anchor="middle" opacity="0.65">Tip: blur client names and emails first.</text>
+</svg>

@@ -1,0 +1,49 @@
+# John Patrick Velasco
+
+> Freelance automation specialist and technical virtual assistant, based in the Philippines, working with clients worldwide.
+
+## Who he is
+
+John Patrick Velasco (goes by Patrick; also known as JP Velasco or Patrick Velasco) is a freelance automation specialist and technical virtual assistant. He is a former full-stack developer who worked in government before moving into automation and technical VA work. He is based in the Philippines and works remotely with clients worldwide.
+
+## Who he helps
+
+Coaches, real estate agents, creators and UGC businesses, small business owners, and tech companies who need the technical side of their business set up and kept running.
+
+## Services
+
+- Business automation — connecting apps, forms and workflows with n8n, Zapier, Make and webhooks
+- GoHighLevel (GHL) setup, sales funnels and landing pages
+- Webinar automation, including AEvent
+- CRM setup and cleanup in GoHighLevel or HubSpot
+- Revenue operations — keeping pipelines, payments and reports in sync
+- Email deliverability — SPF, DKIM, DMARC and Mailgun setup
+- AI agents and assistants for lead replies and booking
+- AI agents built on Claude, connected to business tools through MCP (Model Context Protocol) — so an agent can actually look up a contact, update a CRM or book a call, not just chat
+- Payment notifications, for example posting to Discord when a client pays
+- Simple web pages and fixes — HTML, CSS, JavaScript, WordPress, Hostinger
+
+## How to work with him
+
+- Start with a free 20-minute intro call to talk through what's needed.
+- New clients usually start with a small, fixed-price trial project before anything bigger.
+- Ongoing work is available as monthly support (a set number of hours each month) or hourly.
+- Rates are given on request after the intro call, based on scope.
+
+## Contact
+
+- Site: https://jpvelasco.dev/
+- Email: johnpatrickvelasco.automation@gmail.com
+- Book a call: https://www.jpvelasco.dev/widget/booking/e4HM2hQkbffWB4DdPzeM
+
+## Location and availability
+
+Based in the Philippines. Works with clients worldwide; overlap hours are agreed on the first call.
+
+## Key pages
+
+- Services: https://jpvelasco.dev/#how-i-help
+- Work / case studies: https://jpvelasco.dev/#work
+- How it works: https://jpvelasco.dev/#how-it-works
+- FAQ: https://jpvelasco.dev/#faq
+- Book a call: https://jpvelasco.dev/#book

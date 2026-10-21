@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" role="img" aria-label="Placeholder for project 4 before screenshot">
+  <rect width="800" height="600" fill="#FBF6EE"/>
+  <rect x="16" y="16" width="768" height="568" rx="16" fill="none" stroke="#C4553A" stroke-width="3" stroke-dasharray="10 9"/>
+
+  <!-- faint, mostly-empty channel in the background -->
+  <rect x="40" y="48" width="720" height="60" rx="12" fill="#EFE3D0" opacity="0.5"/>
+  <rect x="64" y="68" width="220" height="16" rx="8" fill="#DDE3D3" opacity="0.5"/>
+  <rect x="40" y="124" width="500" height="18" rx="9" fill="#DDE3D3" opacity="0.35"/>
+
+  <!-- a handwritten sticky note asking the obvious question -->
+  <g transform="rotate(-4 440 330)">
+    <rect x="310" y="240" width="260" height="180" rx="10" fill="#FBF6EE" stroke="#C4553A" stroke-width="3" stroke-dasharray="8 7"/>
+    <text x="440" y="320" font-family="Fraunces, serif" font-style="italic" font-size="30" fill="#2E2621" text-anchor="middle" opacity="0.8">check</text>
+    <text x="440" y="358" font-family="Fraunces, serif" font-style="italic" font-size="30" fill="#2E2621" text-anchor="middle" opacity="0.8">payments?</text>
+  </g>
+
+  <text x="400" y="500" font-family="Figtree, sans-serif" font-size="26" fill="#2E2621" text-anchor="middle" opacity="0.8">Drop screenshot here: project-4-before.png</text>
+  <text x="400" y="534" font-family="Figtree, sans-serif" font-size="17" font-style="italic" fill="#2E2621" text-anchor="middle" opacity="0.65">Tip: blur client names and emails first.</text>
+</svg>

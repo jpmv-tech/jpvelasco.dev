@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" role="img" aria-label="Placeholder for project 3 before screenshot">
+  <rect width="800" height="600" fill="#FBF6EE"/>
+  <rect x="16" y="16" width="768" height="568" rx="16" fill="none" stroke="#C4553A" stroke-width="3" stroke-dasharray="10 9"/>
+
+  <!-- faint suggestion of three mismatched tables that don't line up -->
+  <g transform="rotate(-2 230 170)">
+    <rect x="60" y="90" width="340" height="150" rx="10" fill="#EFE3D0"/>
+    <rect x="76" y="106" width="308" height="18" rx="6" fill="#DDE3D3"/>
+    <rect x="76" y="136" width="308" height="12" rx="6" fill="#DDE3D3" opacity="0.7"/>
+    <rect x="76" y="160" width="308" height="12" rx="6" fill="#DDE3D3" opacity="0.7"/>
+    <rect x="76" y="184" width="308" height="12" rx="6" fill="#DDE3D3" opacity="0.7"/>
+  </g>
+  <g transform="rotate(3 560 220)">
+    <rect x="450" y="130" width="230" height="200" rx="10" fill="#DDE3D3"/>
+    <rect x="466" y="146" width="198" height="18" rx="6" fill="#EFE3D0"/>
+    <rect x="466" y="174" width="94" height="12" rx="6" fill="#EFE3D0" opacity="0.8"/>
+    <rect x="568" y="174" width="96" height="12" rx="6" fill="#EFE3D0" opacity="0.8"/>
+    <rect x="466" y="198" width="94" height="12" rx="6" fill="#EFE3D0" opacity="0.8"/>
+    <rect x="568" y="198" width="96" height="12" rx="6" fill="#EFE3D0" opacity="0.8"/>
+    <rect x="466" y="222" width="94" height="12" rx="6" fill="#EFE3D0" opacity="0.8"/>
+    <rect x="568" y="222" width="96" height="12" rx="6" fill="#EFE3D0" opacity="0.8"/>
+  </g>
+  <g transform="rotate(-1 330 430)">
+    <rect x="110" y="350" width="560" height="130" rx="10" fill="#EFE3D0" opacity="0.95"/>
+    <rect x="130" y="366" width="190" height="16" rx="6" fill="#DDE3D3"/>
+    <rect x="330" y="366" width="190" height="16" rx="6" fill="#DDE3D3"/>
+    <rect x="530" y="366" width="110" height="16" rx="6" fill="#DDE3D3"/>
+    <rect x="130" y="394" width="510" height="12" rx="6" fill="#DDE3D3" opacity="0.6"/>
+    <rect x="130" y="416" width="510" height="12" rx="6" fill="#DDE3D3" opacity="0.6"/>
+    <rect x="130" y="438" width="510" height="12" rx="6" fill="#DDE3D3" opacity="0.6"/>
+  </g>
+
+  <text x="400" y="535" font-family="Figtree, sans-serif" font-size="26" fill="#2E2621" text-anchor="middle" opacity="0.8">Drop screenshot here: project-3-before.png</text>
+  <text x="400" y="568" font-family="Figtree, sans-serif" font-size="17" font-style="italic" fill="#2E2621" text-anchor="middle" opacity="0.65">Tip: blur client names and emails first.</text>
+</svg>

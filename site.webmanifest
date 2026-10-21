@@ -1,0 +1,13 @@
+{
+  "name": "John Patrick Velasco — Automation Specialist & Technical Virtual Assistant",
+  "short_name": "John Patrick",
+  "theme_color": "#FBF6EE",
+  "background_color": "#FBF6EE",
+  "icons": [
+    {
+      "src": "assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

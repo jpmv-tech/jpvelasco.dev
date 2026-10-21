@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000" role="img" aria-label="Placeholder for project 1 screenshot">
+  <rect width="1600" height="1000" fill="#FBF6EE"/>
+  <rect x="24" y="24" width="1552" height="952" rx="22" fill="none" stroke="#C4553A" stroke-width="4" stroke-dasharray="14 12"/>
+
+  <!-- faint pipeline columns suggestion -->
+  <g>
+    <rect x="80" y="90" width="330" height="760" rx="16" fill="#EFE3D0"/>
+    <rect x="112" y="122" width="150" height="20" rx="10" fill="#DDE3D3"/>
+    <rect x="112" y="170" width="266" height="90" rx="12" fill="#DDE3D3"/>
+    <rect x="112" y="276" width="266" height="90" rx="12" fill="#DDE3D3"/>
+    <rect x="112" y="382" width="266" height="90" rx="12" fill="#DDE3D3"/>
+  </g>
+  <g>
+    <rect x="435" y="90" width="330" height="760" rx="16" fill="#EFE3D0"/>
+    <rect x="467" y="122" width="150" height="20" rx="10" fill="#DDE3D3"/>
+    <rect x="467" y="170" width="266" height="90" rx="12" fill="#DDE3D3"/>
+    <rect x="467" y="276" width="266" height="90" rx="12" fill="#DDE3D3"/>
+  </g>
+  <g>
+    <rect x="790" y="90" width="330" height="760" rx="16" fill="#EFE3D0"/>
+    <rect x="822" y="122" width="150" height="20" rx="10" fill="#DDE3D3"/>
+    <rect x="822" y="170" width="266" height="90" rx="12" fill="#DDE3D3"/>
+  </g>
+  <g>
+    <rect x="1145" y="90" width="375" height="760" rx="16" fill="#EFE3D0"/>
+    <rect x="1177" y="122" width="150" height="20" rx="10" fill="#DDE3D3"/>
+    <rect x="1177" y="170" width="311" height="90" rx="12" fill="#DDE3D3"/>
+  </g>
+
+  <text x="800" y="500" font-family="Figtree, sans-serif" font-size="40" fill="#2E2621" text-anchor="middle" opacity="0.8">Drop screenshot here: project-1.png</text>
+  <text x="800" y="550" font-family="Figtree, sans-serif" font-size="24" font-style="italic" fill="#2E2621" text-anchor="middle" opacity="0.65">Tip: blur client names and emails first.</text>
+</svg>
