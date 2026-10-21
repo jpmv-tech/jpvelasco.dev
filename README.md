@@ -27,6 +27,10 @@ Every image slot on the page is already wired up to look for a specific filename
 
 If you'd rather point a slot at a different filename instead of renaming your file, you can do that too: open `index.html`, find the `<img>` tag for that slot (search for the filename, e.g. `project-1.png`), and change the `src="assets/screenshots/project-1.png"` part to your file's path. One line, that's the whole alternative.
 
+**Images are served as compressed `.webp` copies, for speed.** The original PNG/JPG files are still in the folder, but the page actually loads smaller WebP versions sized for how big each image appears: `assets/screenshots/project-*.webp`, the scrolling-strip images in `assets/screenshots/thumbs/`, and `assets/photo/patrick.webp`. This cut the page's images from about 12 MB to under 1 MB. So when you replace a screenshot, either:
+- convert the new file to WebP for free at [squoosh.app](https://squoosh.app) (pick WebP, quality ~80, and shrink it to about 1600 px wide — or about 440 px tall for the scrolling strip), save it with the same `.webp` name over the old one; or
+- simply point that `<img>` tag's `src` at your new PNG/JPG — it works fine, it's just slower to load.
+
 ## How to add your photo
 
 Same idea as above: save your photo as `assets/photo/patrick.jpg` (a portrait/vertical photo works best — roughly 800 pixels wide by 1000 tall). It'll slot into the "Let's talk" section automatically.
