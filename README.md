@@ -10,7 +10,7 @@ No coding knowledge needed for any of this. Take it step by step.
 - `assets/screenshots/` — **this is where you drop your real screenshots.** It's empty until you add files.
 - `assets/placeholders/` — nice-looking "drop your screenshot here" stand-ins. You never need to touch these; they disappear automatically the moment you add a matching real file.
 - `assets/photo/` — this is where your real photo of yourself goes.
-- `assets/favicon.svg` — the little icon shown in the browser tab. Already done, no action needed.
+- `assets/favicon-32.png`, `favicon.ico`, `assets/apple-touch-icon.png`, `assets/icon-192.png`, `assets/icon-512.png` — the browser-tab and home-screen icons, cut as a circle from `assets/photo/patrick.jpg`. Already done, no action needed.
 - `_archive-v1/` — an old version of the site. **Leave it alone.** Don't upload it anywhere, and feel free to delete it once you're happy with this version.
 
 ## How the screenshots work (the important bit)
