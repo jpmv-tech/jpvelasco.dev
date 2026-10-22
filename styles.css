@@ -876,31 +876,18 @@ img.is-placeholder {
   padding: 0;
 }
 .menu-items li {
-  display: flex;
-  align-items: baseline;
-  gap: 0.5rem;
   padding: 0.6rem 0;
   border-bottom: 1px solid color-mix(in srgb, var(--ink) 15%, transparent);
 }
 .menu-items li:last-child { border-bottom: none; }
 .menu-name {
-  font-weight: 600;
-  white-space: nowrap;
-}
-.menu-leader {
-  flex-grow: 1;
-  border-bottom: 2px dotted color-mix(in srgb, var(--ink) 35%, transparent);
-  height: 0.6em;
-}
-.menu-price {
-  white-space: nowrap;
+  display: block;
   font-weight: 600;
 }
 .menu-desc {
   display: block;
   font-size: 0.9rem;
   color: var(--ink-soft);
-  margin-top: -0.3rem;
 }
 .menu-note {
   font-size: 0.9rem;
