@@ -95,12 +95,15 @@
   }
 
   /* ---------------------------------------------------------
-     Click-to-enlarge for [data-zoom] buttons (Project 04).
+     Click-to-enlarge for [data-zoom] buttons (Project 04), the
+     screenshot carousel and the "My work" pictures. Images with
+     data-full open that larger file instead of the thumbnail.
      One shared <dialog>; closes on any click, Esc (native)
      or the close button.
      --------------------------------------------------------- */
   var zoomButtons = document.querySelectorAll("[data-zoom]");
-  if (zoomButtons.length && typeof HTMLDialogElement === "function") {
+  var zoomImages = document.querySelectorAll(".marquee-item img, #work .project-media img");
+  if ((zoomButtons.length || zoomImages.length) && typeof HTMLDialogElement === "function") {
     var lightbox = document.createElement("dialog");
     lightbox.className = "lightbox";
     lightbox.setAttribute("aria-label", "Enlarged screenshot");
@@ -109,14 +112,37 @@
     document.body.appendChild(lightbox);
     var lightboxImg = lightbox.querySelector("img");
 
+    var openLightbox = function (img) {
+      lightboxImg.src = img.getAttribute("data-full") || img.currentSrc || img.src;
+      lightboxImg.alt = img.alt;
+      lightbox.showModal();
+    };
+
     zoomButtons.forEach(function (btn) {
       btn.addEventListener("click", function () {
-        var img = btn.querySelector("img");
-        lightboxImg.src = img.currentSrc || img.src;
-        lightboxImg.alt = img.alt;
-        lightbox.showModal();
+        openLightbox(btn.querySelector("img"));
       });
     });
+
+    zoomImages.forEach(function (img) {
+      if (img.closest("[data-zoom]")) return; // already handled by its button
+      img.classList.add("is-zoomable");
+      img.addEventListener("click", function () {
+        openLightbox(img);
+      });
+      // Keyboard access, except for the carousel's hidden duplicate row
+      if (!img.closest('[aria-hidden="true"]')) {
+        img.tabIndex = 0;
+        img.setAttribute("role", "button");
+        img.addEventListener("keydown", function (e) {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            openLightbox(img);
+          }
+        });
+      }
+    });
+
     lightbox.addEventListener("click", function () {
       lightbox.close();
     });

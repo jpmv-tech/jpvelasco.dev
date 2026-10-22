@@ -450,7 +450,8 @@ img.is-placeholder {
   --marquee-duration: 45s; /* shorter row, so less time keeps the speed matched */
   animation-direction: reverse;
 }
-.marquee-stack:hover .marquee-track { animation-play-state: paused; }
+.marquee-stack:hover .marquee-track,
+.marquee-stack:focus-within .marquee-track { animation-play-state: paused; }
 .marquee-group {
   display: flex;
   list-style: none;
@@ -658,7 +659,8 @@ img.is-placeholder {
   .project-ba .frame-main { max-width: none; }
 }
 
-/* Click-to-enlarge (Project 04 only; see script.js) */
+/* Click-to-enlarge (Project 04, carousel and work pictures; see script.js) */
+.is-zoomable { cursor: zoom-in; }
 .zoom-btn {
   display: block;
   width: 100%;
