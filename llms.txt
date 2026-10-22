@@ -34,7 +34,7 @@ Coaches, real estate agents, creators and UGC businesses, small business owners,
 
 - Site: https://jpvelasco.dev/
 - Email: johnpatrickvelasco.automation@gmail.com
-- Book a call: https://www.jpvelasco.dev/widget/booking/e4HM2hQkbffWB4DdPzeM
+- Book a call: https://api.leadconnectorhq.com/widget/booking/e4HM2hQkbffWB4DdPzeM
 
 ## Location and availability
 
