@@ -624,17 +624,19 @@ img.is-placeholder {
 }
 .frame-before img { border-radius: 10px; width: 100%; height: auto; }
 
-/* Before/after stack (Project 04): "before" on top at full column width,
-   a hand-drawn arrow, then the "after" phone screenshot. No overlap. */
+/* Before/after side by side (Project 04): "before" on the left,
+   a hand-drawn arrow pointing right, then the "after" phone screenshot. */
+.project-ba-media {
+  display: grid;
+  grid-template-columns: 1.6fr auto 1fr;
+  align-items: center;
+  gap: 0.5rem;
+}
 .project-ba .frame-before {
   width: 100%;
   margin: 0;
-  padding: 0.75rem;
+  padding: 0.5rem;
   background: var(--cream);
-}
-.project-ba .frame-main {
-  max-width: 360px;
-  margin: 0 auto;
 }
 .project-ba .after-label {
   display: block;
@@ -644,9 +646,9 @@ img.is-placeholder {
 }
 .ba-arrow {
   display: block;
-  width: 44px;
-  height: 52px;
-  margin: 0.75rem auto 0.25rem;
+  width: 36px;
+  height: 42px;
+  transform: rotate(-90deg);
 }
 .ba-arrow path {
   fill: none;
@@ -656,7 +658,8 @@ img.is-placeholder {
   stroke-linejoin: round;
 }
 @media (max-width: 599px) {
-  .project-ba .frame-main { max-width: none; }
+  .project-ba-media { gap: 0.25rem; }
+  .ba-arrow { width: 26px; height: 30px; }
 }
 
 /* Click-to-enlarge (Project 04, carousel and work pictures; see script.js) */
