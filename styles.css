@@ -659,6 +659,15 @@ img.is-placeholder {
   .project-ba .frame-main { max-width: none; }
 }
 
+/* Funnel gallery (Project 05): one large mockup, two smaller below */
+.project-gallery .gallery-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.project-gallery .frame-main { border-radius: var(--radius-sm); }
+
 /* Click-to-enlarge (Project 04, carousel and work pictures; see script.js) */
 .is-zoomable { cursor: zoom-in; }
 .zoom-btn {
